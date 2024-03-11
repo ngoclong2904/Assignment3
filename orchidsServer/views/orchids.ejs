@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="https://bulma.io">
+                <img src="https://i.pinimg.com/originals/98/e9/ec/98e9ec2eef96f82d6080d985e1adb524.jpg"
+                    width="100" height="50">
+                <h1 style="font-size: xx-large; padding-left: 10px; color: red;">ORCHID</h1>
+
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary">
+                        <strong>Sign up</strong>
+                    </a>
+                    <a class="button is-light">
+                        Log in
+                    </a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Price</th>
+                            <th>Original</th>
+                            <th>Is Natural</th>
+                            <th>color</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% orchids.forEach(function(orchids){ %>
+                            <tr>
+                                <td>
+                                    <figure class="image is-64x64">
+                                        <img src=<%=orchids.image %> >
+                                    </figure>
+                                </td>
+                                <td>
+                                    <%= orchids.name %>
+                                </td>
+                                <td>
+                                    <%= orchids.price %>
+                                </td>
+                                <td>
+                                    <%= orchids.original %>
+                                </td>
+                                <td>
+                                    <%= orchids.isNatural %>
+                                </td>
+                                <td>
+                                    <%= orchids.color %>
+                                </td>
+                                <td>
+                                    <div class="buttons are-small">
+                                        <a href="/orchids/edit/<%= orchids.id %>"><button
+                                                class="button is-warning is-light">Edit</button></a>
+                                        <a href="/orchids/delete/<%= orchids.id %>"
+                                            onclick="return confirm('Bạn có chắc chắn muốn xóa?')"><button
+                                                class="button is-danger is-light">Delete</button></a>
+
+                                    </div></a>
+                                </td>
+                            </tr>
+                            <% })%>
+                    </tbody>
+                </table>
+            </div>
+            <div class="column">
+                <form method="post">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Name</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input is-info" name="name" type="text" placeholder="Lan Hồ Điệp">
+                                </div>
+                                <p class="help is-danger">
+                                    This field is required
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Image</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input is-info" name="image" type="text" placeholder="URL of image">
+                                </div>
+                                <p class="help is-danger">
+                                    This field is required
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Price</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input is-info" name="price" min="0" type="number" placeholder="price">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Original</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field is-narrow">
+                                <div class="control">
+                                    <div class="select is-fullwidth">
+                                        <select name="original">
+                                            <%for (let original of nationList) { %>
+                                                <option value="<%= original.name %>">
+                                                    <%= original.name %>
+                                                </option>
+                                                <% } %>
+                                                    }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Is Natural?</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field is-narrow">
+                                <div class="control">
+                                    <div class="select is-fullwidth">
+                                        <select name="isNatural">
+                                            <option value="true">True</option>
+                                            <option value="false">False</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Color</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field is-narrow">
+                                <div class="control">
+                                    <div class="select is-fullwidth">
+                                        <select name="color">
+                                            <%for (let color of colorList) { %>
+                                                <option value="<%= color.name %>">
+                                                    <%= color.name %>
+                                                </option>
+                                                <% } %>
+                                                    }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field is-horizontal">
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <button class="button is-primary" type="submit" style="margin-left: 400px; color: brown; ">
+                                        Create
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
