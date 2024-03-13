@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+mongoose.set('strictQuery', true);
 const Schema = mongoose.Schema
 
 const orchidsSchema = new Schema(
@@ -31,9 +32,9 @@ const orchidsSchema = new Schema(
         // comments: [
         //     commentSchema
         // ],
-        category: {
+        categories: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Categories',
+            ref: 'category',
             require: true
         }
     },

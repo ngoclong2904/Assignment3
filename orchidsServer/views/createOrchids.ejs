@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Orchids</title>
+</head>
+
+<body>
+    <div class="column">
+        <form method="post">
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Name</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <input class="input is-info" name="name" type="text" placeholder="Lan Hồ Điệp">
+                        </div>
+                        <p class="help is-danger">
+                            This field is required
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Image</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <input class="input is-info" name="image" type="text" placeholder="URL of image">
+                        </div>
+                        <p class="help is-danger">
+                            This field is required
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Price</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <input class="input is-info" name="price" min="0" type="number" placeholder="price">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Original</label>
+                </div>
+                <div class="field-body">
+                    <div class="field is-narrow">
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                                <select name="original">
+                                    <%for (let original of nationList) { %>
+                                        <option value="<%= original.name %>">
+                                            <%= original.name %>
+                                        </option>
+                                        <% } %>
+                                            }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Is Natural?</label>
+                </div>
+                <div class="field-body">
+                    <div class="field is-narrow">
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                                <select name="isNatural">
+                                    <option value="true">True</option>
+                                    <option value="false">False</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Color</label>
+                </div>
+                <div class="field-body">
+                    <div class="field is-narrow">
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                                <select name="color">
+                                    <%for (let color of colorList) { %>
+                                        <option value="<%= color.name %>">
+                                            <%= color.name %>
+                                        </option>
+                                        <% } %>
+                                            }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <button class="button is-primary" type="submit" style="margin-left: 400px; color: brown; ">
+                                Create
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

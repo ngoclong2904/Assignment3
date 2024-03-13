@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% categories.forEach(function(categories){ %>
+                            <tr>
+                                <td>
+                                    <%= categories.name %>
+                                </td>
+                                <td>
+                                    <%= categories.description %>
+                                </td>
+                                <td>
+                                    <div class="buttons are-small">
+                                        <a href="/categories/edit/<%= categories.id %>"><button
+                                                class="button is-warning is-light">Edit</button></a>
+                                        <a href="/categories/delete/<%= categories.id %>"
+                                            onclick="return confirm('Bạn có chắc chắn muốn xóa?')"><button
+                                                class="button is-danger is-light">Delete</button></a>
+                                    </div></a>
+                                </td>
+                            </tr>
+                            <% })%>
+                    </tbody>
+                </table>
+            </div>
+</body>
+
+</html>

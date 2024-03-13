@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema
+var passportLocalMongoose = require('passport-local-mongoose')
 
 const usersSchema = new Schema(
     {
@@ -18,17 +19,17 @@ const usersSchema = new Schema(
         },
         YOB: {
             type: String,
-            require: true
+            default: '2001'
         },
         isAdmin: {
             type: Boolean,
-            default: false
+            default: false,
+            require: true
         },
     },
     {
         timestamps: true
     }
 );
-
 var Users = mongoose.model('users', usersSchema);
 module.exports = Users;

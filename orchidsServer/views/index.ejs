@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Trang chủ</title>
 </head>
+
 <body>
-    <h1> New index </h1>
+    <% if (error_msg !=='' ) { %>
+        <div class="alert alert-warning alert-dismissible has-text-centered mt-4 has-text-danger mt-4" role="alert">
+            <%= error_msg %>
+        </div>
+        <% } %>
+
+            <div class="columns is-multiline mt-4 ml-4 mr-4">
+                <% for (let orchid of orchids) { %>
+                    <div class="column is-one-quarter">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-3by2">
+                                    <img src="<%= orchid.image %>" alt="Orchids Image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    Name: <%= orchid.name %>
+                                </div>
+                                <div class="content">
+                                    Categories: <%= orchid.category.name %>
+                                </div>
+                                <a href="/orchids/<%= orchid.id %>" class="btn btn-info">Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
 </body>
+
 </html>

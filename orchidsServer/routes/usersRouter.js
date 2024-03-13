@@ -1,8 +1,11 @@
 const express = require('express');
-const userController = require('../controllers/usersController');
 const bodyParser = require('body-parser');
+
+const userController = require('../controllers/usersController');
 const usersRouter = express.Router();
 
+const { redirectLogin } = require('../config/redirectLogin')
+const { ensureAuthenticated } = require('../config/auth')
 usersRouter.use(bodyParser.json())
 
 usersRouter
@@ -15,13 +18,16 @@ usersRouter
   .get(userController.login)
   .post(userController.signin)
 
-// usersRouter.route('/logout')
-//   .get(userController.signout)
+usersRouter
+  .route('/logout')
+  .get(userController.signout)
 
-// usersRouter.route('/dashboard')
-//   .get(ensureAuthenticated, redirectLogin, userController.dashboard)
+usersRouter
+  .route('/dashboard')
+  .get(ensureAuthenticated, redirectLogin, userController.dashboard)
 
-// usersRouter.route('/edit')
+// usersRouter
+//   .route('/edit')
 //   .get(ensureAuthenticated, userController.formEdit)
 //   .post(ensureAuthenticated, userController.edit)
 
